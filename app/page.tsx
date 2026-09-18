@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PAST_UNITS, TODAY_QUIZ } from "@/lib/mock-data";
+import { LESSON_SESSIONS, TODAY_QUIZ } from "@/lib/mock-data";
 
 export default function HomePage() {
   return (
@@ -38,25 +38,25 @@ export default function HomePage() {
         </Link>
       </section>
 
-      {/* 지난 수업 복습하기 */}
+      {/* 1과 복습하기 */}
       <section>
         <h2 className="mb-3 text-sm font-bold text-stone-600">
-          지난 수업 복습하기
+          1과 복습하기
         </h2>
-        <div className="grid grid-cols-3 gap-3">
-          {PAST_UNITS.map((unit) => (
+        <div className="grid grid-cols-2 gap-3">
+          {LESSON_SESSIONS.map((session) => (
             <Link
-              key={unit.unitNumber}
-              href={unit.available ? `/quiz/${unit.quizId}` : "#"}
-              aria-disabled={!unit.available}
+              key={session.unitNumber}
+              href={session.available ? `/quiz/${session.quizId}` : "#"}
+              aria-disabled={!session.available}
               className={
-                unit.available
+                session.available
                   ? "flex flex-col items-center justify-center rounded-2xl border border-brand-200 bg-white py-4 text-sm font-semibold text-brand-700 shadow-sm transition hover:border-brand-400 hover:bg-brand-50 active:scale-[0.97]"
                   : "flex flex-col items-center justify-center rounded-2xl border border-dashed border-stone-200 bg-stone-50 py-4 text-sm font-semibold text-stone-300"
               }
             >
-              {unit.unitLabel}
-              {!unit.available && (
+              {session.unitLabel}
+              {!session.available && (
                 <span className="mt-1 text-[10px] font-normal text-stone-300">
                   준비 중
                 </span>
