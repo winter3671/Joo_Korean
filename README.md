@@ -1,11 +1,14 @@
 ## 📌 현재 진행 상황 (2026-09-18)
 
-이 저장소는 아래 프로토타입까지 완료된 상태입니다.
+이 저장소는 "41. 추천 개발 단계" 기준 **Phase 1 (화면 프로토타입)** 완료 + **Phase 2 일부(인프라 연결)** 까지 진행된 상태입니다.
 
-- **기술 스택 초기 세팅**: Next.js 16 (App Router) + TypeScript + Tailwind CSS v4, `@supabase/supabase-js` 설치 완료 (아직 DB는 연결하지 않고 mock 데이터로 화면만 구현한 상태)
-- **학생 화면 프로토타입**: 홈(오늘의 복습) → 퀴즈 풀이(객관식/O·X/빈칸/문장배열/이미지 어휘/듣기 6종) → 정답·해설(베트남어 도움말 포함) → 결과 화면(어휘·문법·듣기 별점, 틀린 문제 다시 풀기)까지 클릭 가능한 흐름으로 구현
-- **교사 관리자 화면 프로토타입**: Dashboard(참여 인원·평균 점수·학생들이 어려워한 문제)와 문제 등록 화면(`/admin/questions/new`) 구현 (실제 저장은 아직 동작하지 않음)
-- **디자인**: 전체적으로 연한 오렌지 톤 테마 적용 (`app/globals.css` 의 `--color-brand-*` 참고)
+- **기술 스택 초기 세팅**: Next.js 16 (App Router) + TypeScript + Tailwind CSS v4, `@supabase/supabase-js` 설치 완료
+- **학생 화면 프로토타입**: 홈(`/`, 오늘의 복습 카드 + 지난 수업 목록) → 퀴즈 풀이(`/quiz/[quizId]`, 객관식/O·X/빈칸/문장배열/이미지 어휘/듣기 6종 모두 구현) → 정답 확인·해설(베트남어 도움말 토글) → 다음 문제 → 결과 화면(어휘·문법·듣기 별점, 틀린 문제만 다시 풀기)까지 클릭 가능한 흐름으로 구현. mock 퀴즈 id는 `snu3-unit7-review`.
+- **교사 관리자 화면 프로토타입**: `/admin` Dashboard(오늘 참여자·평균 점수·어려운 문제 랭킹·내 수업)와 문제 등록 화면 `/admin/questions/new`(6개 유형 전환 UI) 구현. **저장 버튼은 아직 동작하지 않고 안내 메시지만 표시**됩니다. 나머지 nav 탭(수업 관리/교재 관리/단원 관리/학습 통계)은 "준비중" 배지만 있고 라우트는 아직 없습니다.
+- **Supabase 연결 완료**: `.env.local` 생성 및 Supabase 프로젝트 연결 완료. 다만 **화면(학생/관리자 모두)은 아직 `lib/mock-data.ts` 의 mock 데이터를 사용** 중이며, DB 스키마 마이그레이션 및 실제 쿼리 연동은 아직 진행 전입니다.
+- **Vercel 배포 완료**: Vercel 프로젝트 연결 및 배포 완료 (현재 배포된 화면도 위와 마찬가지로 mock 데이터 기반 프로토타입입니다).
+- **검증**: `npm run build`, `npx tsc --noEmit`, `npx eslint .` 모두 통과 확인.
+- **디자인**: 전체적으로 연한 오렌지 톤 테마 적용 (`app/globals.css` 의 `--color-brand-*` 참고). 웹폰트(Noto Sans KR) 대신 시스템 폰트 스택("Apple SD Gothic Neo", "Malgun Gothic" 등) 사용 중. 문장 배열 문제는 Drag & Drop 대신 "탭하여 순서대로 쌓기" 방식, 듣기 문제는 실제 음원 없이 재생 시뮬레이션으로 구현.
 
 ### 로컬 실행 방법
 
@@ -14,12 +17,12 @@ npm install
 npm run dev
 ```
 
-`http://localhost:3000` 에서 학생 화면을, `http://localhost:3000/admin` 에서 교사 관리자 화면을 확인할 수 있습니다.
+`http://localhost:3000` 에서 학생 화면을, `http://localhost:3000/admin` 에서 교사 관리자 화면을 확인할 수 있습니다. (`.env.local` 은 이미 생성되어 있어야 합니다.)
 
 ### 다음 단계 (README "41. 추천 개발 단계" 기준)
 
-- Phase 2: Supabase 프로젝트 생성 후 `.env.local` 설정 (`.env.local.example` 참고), `lib/supabase.ts` 를 이용해 실제 DB 연동
-- Phase 3~5: 교사 관리자 CRUD, 학생 퀴즈 기능을 mock 데이터 대신 실 데이터로 교체, 통계 화면 고도화
+- **Phase 2 마무리**: 스키마(teachers/classes/books/units/quizzes/questions/choices/quiz_attempts/answers) 마이그레이션 → `lib/mock-data.ts` 를 실제 Supabase 쿼리로 교체
+- **Phase 3~5**: 교사 관리자 CRUD 실제 동작 구현, 나머지 관리자 탭(수업/교재/단원 관리, 학습 통계) 라우트 구현, 학생 퀴즈 기능을 mock 데이터 대신 실 데이터로 교체, 통계 화면 고도화
 
 ---
 
