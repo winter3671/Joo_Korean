@@ -1,14 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
-import type { Question, Quiz } from "@/types/quiz";
+import type { Question, QuestionType, Quiz } from "@/types/quiz";
 import { QUESTION_TYPE_LABEL } from "@/types/quiz";
 import ProgressBar from "./ProgressBar";
 import QuestionCard from "./QuestionCard";
 import ResultView, { type AttemptRecord } from "./ResultView";
 
 type Phase = "answering" | "feedback" | "result";
+
+/** 오답이어도 바로 정답을 보여주지 않고, 정답을 고를 때까지 다시 시도하게 하는 선택형 문제 유형 */
+const RETRY_UNTIL_CORRECT_TYPES: QuestionType[] = [
+  "multiple-choice",
+  "ox",
+  "image",
+  "listening",
+];
 
 function isAnswerCorrect(question: Question, value: string): boolean {
   if (question.type === "fill-blank") {
@@ -32,24 +40,64 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
   const [records, setRecords] = useState<AttemptRecord[]>([]);
   const [translationLang, setTranslationLang] = useState<"none" | "vi" | "en">("none");
 
+  // 재시도 가능한 선택형 문제에서 오답을 고른 뒤, 정답을 맞힐 때까지의 상태
+  const [hasFailedOnce, setHasFailedOnce] = useState(false);
+  const [wrongChoiceId, setWrongChoiceId] = useState<string | null>(null);
+  const [wrongToastVisible, setWrongToastVisible] = useState(false);
+  const [attemptNonce, setAttemptNonce] = useState(0);
+  const wrongTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
   const question = pool[index];
   const lastRecord = records[records.length - 1];
+  // 방금 제출한 답이 실제로 맞았는지 (재시도형 문제는 채점용 lastRecord.correct와 다를 수 있음:
+  // 재시도 끝에 맞혔다면 방금은 정답이지만, 처음에 틀렸으므로 채점상으로는 오답으로 기록됨)
+  const lastAttemptCorrect =
+    submitted !== null ? isAnswerCorrect(question, submitted) : false;
+
+  function clearWrongTimers() {
+    wrongTimers.current.forEach(clearTimeout);
+    wrongTimers.current = [];
+  }
 
   function handleSubmit() {
     if (!currentAnswer.ready) return;
     const correct = isAnswerCorrect(question, currentAnswer.value);
+
+    if (!correct && RETRY_UNTIL_CORRECT_TYPES.includes(question.type)) {
+      // 오답: 정답을 바로 보여주지 않고, 살짝 표시만 한 뒤 다시 고르게 한다
+      clearWrongTimers();
+      setHasFailedOnce(true);
+      setWrongChoiceId(currentAnswer.value);
+      setWrongToastVisible(true);
+      setCurrentAnswer({ value: "", ready: false });
+
+      wrongTimers.current = [
+        setTimeout(() => setWrongToastVisible(false), 900),
+        setTimeout(() => {
+          setWrongChoiceId(null);
+          setAttemptNonce((n) => n + 1);
+        }, 1250),
+      ];
+      return;
+    }
+
     setSubmitted(currentAnswer.value);
     setRecords((prev) => [
       ...prev,
-      { question, answerValue: currentAnswer.value, correct },
+      { question, answerValue: currentAnswer.value, correct: correct && !hasFailedOnce },
     ]);
     setPhase("feedback");
   }
 
   function goToNextQuestion() {
+    clearWrongTimers();
     setCurrentAnswer({ value: "", ready: false });
     setSubmitted(null);
     setTranslationLang("none");
+    setHasFailedOnce(false);
+    setWrongChoiceId(null);
+    setWrongToastVisible(false);
+    setAttemptNonce(0);
     setPhase("answering");
   }
 
@@ -96,25 +144,42 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
         </div>
 
         <QuestionCard
-          key={question.id}
+          key={`${question.id}-${attemptNonce}`}
           question={question}
           showResult={phase === "feedback"}
           submittedAnswer={submitted}
+          flashWrongId={wrongChoiceId}
           onAnswerChange={(value, ready) => setCurrentAnswer({ value, ready })}
         />
+
+        {phase === "answering" && wrongChoiceId && (
+          <div
+            className={`mt-4 flex justify-center transition-opacity duration-300 ${
+              wrongToastVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <span className="rounded-full bg-rose-100 px-4 py-1.5 text-xs font-bold text-rose-500">
+              ❌ 오답이에요, 다시 시도해보세요
+            </span>
+          </div>
+        )}
 
         {phase === "feedback" && lastRecord && (
           <div
             className={`mt-5 rounded-2xl p-4 ${
-              lastRecord.correct ? "bg-emerald-50" : "bg-rose-50"
+              lastAttemptCorrect ? "bg-emerald-50" : "bg-rose-50"
             }`}
           >
             <p
               className={`mb-2 text-sm font-black ${
-                lastRecord.correct ? "text-emerald-600" : "text-rose-500"
+                lastAttemptCorrect ? "text-emerald-600" : "text-rose-500"
               }`}
             >
-              {lastRecord.correct ? "✅ 맞았어요!" : "❌ 아쉬워요!"}
+              {lastAttemptCorrect
+                ? lastRecord.correct
+                  ? "✅ 맞았어요!"
+                  : "✅ 이제 맞았어요!"
+                : "❌ 아쉬워요!"}
             </p>
             <p className="mb-1 text-xs font-bold text-stone-400">💡 왜 그럴까요?</p>
             <p className="whitespace-pre-line text-sm leading-relaxed text-stone-700">

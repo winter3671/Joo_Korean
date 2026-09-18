@@ -8,6 +8,8 @@ interface QuestionCardProps {
   showResult: boolean;
   submittedAnswer: string | null;
   onAnswerChange: (value: string, ready: boolean) => void;
+  /** 선택형 문제에서 방금 오답으로 확인된 선택지 id (잠깐 빨갛게 표시 후 초기화됨) */
+  flashWrongId?: string | null;
 }
 
 export default function QuestionCard({
@@ -15,6 +17,7 @@ export default function QuestionCard({
   showResult,
   submittedAnswer,
   onAnswerChange,
+  flashWrongId = null,
 }: QuestionCardProps) {
   const [listeningReady, setListeningReady] = useState(false);
 
@@ -41,6 +44,7 @@ export default function QuestionCard({
           submittedAnswer={submittedAnswer}
           correctAnswer={question.correctAnswer}
           onAnswerChange={onAnswerChange}
+          flashWrongId={flashWrongId}
         />
       )}
 
@@ -54,7 +58,11 @@ export default function QuestionCard({
             submittedAnswer={submittedAnswer}
             correctAnswer={question.correctAnswer}
             onAnswerChange={onAnswerChange}
-            disabled={question.type === "listening" && !listeningReady && !showResult}
+            flashWrongId={flashWrongId}
+            disabled={
+              (question.type === "listening" && !listeningReady && !showResult) ||
+              Boolean(flashWrongId)
+            }
           />
         )}
 
@@ -128,6 +136,7 @@ function ChoiceList({
   correctAnswer,
   onAnswerChange,
   disabled,
+  flashWrongId,
 }: {
   choices: Question["choices"];
   showResult: boolean;
@@ -135,6 +144,7 @@ function ChoiceList({
   correctAnswer: string;
   onAnswerChange: (value: string, ready: boolean) => void;
   disabled?: boolean;
+  flashWrongId?: string | null;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -145,6 +155,7 @@ function ChoiceList({
       {choices.map((choice, i) => {
         const isSelected = (showResult ? submittedAnswer : selected) === choice.id;
         const isCorrectChoice = choice.id === correctAnswer;
+        const isFlashingWrong = !showResult && flashWrongId === choice.id;
 
         let stateClasses =
           "border-brand-200 bg-white hover:border-brand-400 hover:bg-brand-50";
@@ -156,6 +167,8 @@ function ChoiceList({
           } else {
             stateClasses = "border-stone-200 bg-stone-50 text-stone-400";
           }
+        } else if (isFlashingWrong) {
+          stateClasses = "border-rose-400 bg-rose-50 text-rose-600";
         } else if (isSelected) {
           stateClasses = "border-brand-500 bg-brand-100 text-brand-700";
         } else if (disabled) {
@@ -182,6 +195,7 @@ function ChoiceList({
             {showResult && isSelected && !isCorrectChoice && (
               <span className="ml-auto">❌</span>
             )}
+            {isFlashingWrong && <span className="ml-auto">❌</span>}
           </button>
         );
       })}
@@ -197,12 +211,14 @@ function OxChoices({
   submittedAnswer,
   correctAnswer,
   onAnswerChange,
+  flashWrongId,
 }: {
   choices: Question["choices"];
   showResult: boolean;
   submittedAnswer: string | null;
   correctAnswer: string;
   onAnswerChange: (value: string, ready: boolean) => void;
+  flashWrongId?: string | null;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
   if (!choices) return null;
@@ -212,6 +228,7 @@ function OxChoices({
       {choices.map((choice) => {
         const isSelected = (showResult ? submittedAnswer : selected) === choice.id;
         const isCorrectChoice = choice.id === correctAnswer;
+        const isFlashingWrong = !showResult && flashWrongId === choice.id;
 
         let stateClasses = "border-brand-200 bg-white text-brand-500";
         if (showResult) {
@@ -222,6 +239,8 @@ function OxChoices({
           } else {
             stateClasses = "border-stone-200 bg-stone-50 text-stone-300";
           }
+        } else if (isFlashingWrong) {
+          stateClasses = "border-rose-400 bg-rose-50 text-rose-500";
         } else if (isSelected) {
           stateClasses = "border-brand-500 bg-brand-100 text-brand-700";
         }
@@ -230,7 +249,7 @@ function OxChoices({
           <button
             key={choice.id}
             type="button"
-            disabled={showResult}
+            disabled={showResult || Boolean(flashWrongId)}
             onClick={() => {
               setSelected(choice.id);
               onAnswerChange(choice.id, true);
