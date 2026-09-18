@@ -23,6 +23,17 @@ export default function QuestionCard({
 
   return (
     <div>
+      {question.context && (
+        <div className="mb-4 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3">
+          <p className="mb-1.5 text-[11px] font-bold tracking-wide text-stone-400">
+            📋 참고 자료
+          </p>
+          <p className="whitespace-pre-line text-sm font-medium leading-relaxed text-stone-600">
+            {question.context}
+          </p>
+        </div>
+      )}
+
       <p className="mb-5 whitespace-pre-line text-lg font-bold leading-relaxed text-stone-800">
         {question.questionText}
       </p>

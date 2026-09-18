@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { Question, Quiz, SkillCategory } from "@/types/quiz";
-import { QUESTION_TYPE_LABEL, QUESTION_TYPE_SKILL } from "@/types/quiz";
+import { QUESTION_TYPE_LABEL, getQuestionSkill } from "@/types/quiz";
 
 export interface AttemptRecord {
   question: Question;
@@ -53,7 +53,7 @@ export default function ResultView({ quiz, records, onRetryWrong }: ResultViewPr
         <div className="space-y-3">
           {SKILL_ORDER.map((skill) => {
             const skillRecords = records.filter(
-              (r) => QUESTION_TYPE_SKILL[r.question.type] === skill,
+              (r) => getQuestionSkill(r.question) === skill,
             );
             const hasData = skillRecords.length > 0;
             const ratio = hasData

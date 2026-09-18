@@ -1,9 +1,14 @@
 import type { Quiz, QuizListItem } from "@/types/quiz";
+import unit1Session1 from "./quizzes/unit1-session1";
 
 /**
  * 프로토타입용 mock 데이터.
  * 추후 Supabase 연동 시 이 파일 대신 lib/supabase.ts 를 통해
  * 실제 DB에서 quizzes / questions / choices 를 조회하도록 교체한다.
+ *
+ * lib/quizzes/*.ts 는 data/*.md 문제은행 파일을
+ * scripts/md-to-quiz.mjs 로 자동 변환해 생성한 것이다.
+ * 문제를 고치려면 원본 md 를 고친 뒤 스크립트를 다시 실행한다.
  */
 
 export const DEMO_QUIZ_ID = "snu3-unit7-review";
@@ -121,18 +126,22 @@ const demoQuiz: Quiz = {
 
 const quizzesById: Record<string, Quiz> = {
   [DEMO_QUIZ_ID]: demoQuiz,
+  [unit1Session1.id]: unit1Session1,
 };
 
 export function getQuizById(quizId: string): Quiz | undefined {
   return quizzesById[quizId];
 }
 
-/** 홈 화면의 "지난 수업 복습하기" 목록. 7과만 실제 mock 데이터가 준비되어 있다. */
+/** 홈 화면의 "지난 수업 복습하기" 목록. 1과·7과만 실제 데이터가 준비되어 있다.
+ * (1과는 1차시 문제은행을 통째로 넣은 것이라 54문제로 꽤 길다 — 데이터 파이프라인
+ * 확인용이며, 실제 수업용 "오늘의 복습" 분량으로 나누는 작업은 다음 단계다.) */
 export const PAST_UNITS: QuizListItem[] = [1, 2, 3, 4, 5, 6, 7].map((n) => ({
   unitNumber: n,
   unitLabel: `${n}과`,
-  quizId: n === 7 ? DEMO_QUIZ_ID : `snu3-unit${n}-review`,
-  available: n === 7,
+  quizId:
+    n === 1 ? unit1Session1.id : n === 7 ? DEMO_QUIZ_ID : `snu3-unit${n}-review`,
+  available: n === 1 || n === 7,
 }));
 
 export const TODAY_QUIZ = {

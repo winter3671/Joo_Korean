@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 수업 자료 원본 PDF (저작권 있는 교재 원본은 git에 올리지 않음.
+# data/ 에는 변환된 문제은행 md 파일만 커밋한다.)
+data/*.pdf
+data/**/*.pdf
