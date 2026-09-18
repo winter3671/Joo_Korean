@@ -47,6 +47,7 @@ export interface Question {
   sentenceParts?: string[];
   explanationKo: string;
   explanationVi?: string;
+  explanationEn?: string;
   /** 이미지 어휘 문제의 큰 이모지(사진 대체) */
   imageEmoji?: string;
   unitLabel: string;
