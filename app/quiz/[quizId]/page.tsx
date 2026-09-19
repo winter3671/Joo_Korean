@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { getQuizById } from "@/lib/mock-data";
+import { getQuizById } from "@/lib/quiz-repository";
 import QuizPlayer from "@/components/quiz/QuizPlayer";
 
 export default async function QuizPage({
   params,
 }: PageProps<"/quiz/[quizId]">) {
   const { quizId } = await params;
-  const quiz = getQuizById(quizId);
+  const quiz = await getQuizById(quizId);
 
   if (!quiz) {
     return (
