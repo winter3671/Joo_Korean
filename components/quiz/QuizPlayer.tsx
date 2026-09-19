@@ -10,8 +10,12 @@ import ResultView, { type AttemptRecord } from "./ResultView";
 
 type Phase = "answering" | "feedback" | "result";
 
-/** 오답이어도 바로 정답을 보여주지 않고, 정답을 고를 때까지 다시 시도하게 하는 선택형 문제 유형 */
-const RETRY_UNTIL_CORRECT_TYPES: QuestionType[] = [
+/**
+ * 오답이어도 바로 정답을 보여주지 않고 한 번 더 기회를 주는 선택형 문제 유형.
+ * 문제당 최대 2번까지만 시도할 수 있다 — 첫 시도에서 틀리면 오답 메시지와 함께
+ * 한 번 더 기회를 주고, 두 번째도 틀리면 그대로 해설을 보여주고 다음 문제로 넘어간다.
+ */
+const RETRYABLE_TYPES: QuestionType[] = [
   "multiple-choice",
   "ox",
   "image",
@@ -63,8 +67,11 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
     if (!currentAnswer.ready) return;
     const correct = isAnswerCorrect(question, currentAnswer.value);
 
-    if (!correct && RETRY_UNTIL_CORRECT_TYPES.includes(question.type)) {
-      // 오답: 정답을 바로 보여주지 않고, 살짝 표시만 한 뒤 다시 고르게 한다
+    // 재시도 가능한 유형에서 "첫 번째" 오답인 경우에만 한 번 더 기회를 준다.
+    // hasFailedOnce가 이미 true라는 건 이번이 두 번째 시도라는 뜻이므로,
+    // 정답이든 오답이든 더 이상 재시도를 주지 않고 아래 채점 로직으로 넘어간다.
+    if (!correct && RETRYABLE_TYPES.includes(question.type) && !hasFailedOnce) {
+      // 첫 번째 오답: 정답을 바로 보여주지 않고, 살짝 표시만 한 뒤 다시 고르게 한다
       clearWrongTimers();
       setHasFailedOnce(true);
       setWrongChoiceId(currentAnswer.value);
