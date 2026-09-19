@@ -34,7 +34,7 @@ npm run build
 ```text
 app/            Next.js App Router 페이지 (/, /quiz/[quizId], /admin, ...)
 components/     화면 컴포넌트 (components/quiz/, components/admin/ 등)
-lib/            mock 데이터(lib/mock-data.ts), Supabase 클라이언트, 변환된 퀴즈 데이터(lib/quizzes/*.ts)
+lib/            mock 데이터(lib/mock-data.ts), Supabase 클라이언트, 변환된 퀴즈 데이터(lib/quizzes/*.ts), 퀴즈 유틸(lib/quiz-utils.ts)
 types/          공용 TypeScript 타입 (types/quiz.ts 등)
 data/           문제은행 원본 md 파일 (data/<과>/<차시>_문제.md) + 변환 프롬프트 문서
 scripts/        data/*.md → lib/quizzes/*.ts 변환 스크립트 (scripts/md-to-quiz.mjs)
@@ -51,10 +51,10 @@ docs/           전체 기획/설계 문서
 - **문제 유형은 4지선다(객관식)로 통일**: 학생들이 비원어민이라 타이핑 부담을 줄이기 위한 결정.
 - **문제은행 → 앱 데이터 자동 변환 파이프라인 구축 완료**: 아래 "문제은행(md) 추가하는 방법" 참고.
 - **1과 1차시(54문제)·2차시(31문제) 문제은행 등록 및 홈 화면 버튼 활성화 완료**.
+- **"오늘의 복습" 분량 축소 완료**: `lib/quiz-utils.ts` 의 `buildShortReview()` 가 전체 문제은행에서 10문제를 등간격으로 골고루 뽑아(분류가 한쪽에 치우치지 않도록) 짧은 일일 복습 퀴즈를 만듦. 홈 화면 상단 "오늘의 복습" 카드는 이 축소판을, "1과 복습하기"의 1차시/2차시 버튼은 여전히 전체 문제은행을 가리킴.
 
 ### 다음 단계
 
-- 1과 1차시/2차시 전체 문제를 "오늘의 복습"용 적정 분량(예: 10문제)으로 나누는 로직/화면
 - 3차시 이후 문제은행 추가 (아래 워크플로우 반복)
 - Phase 2 마무리: Supabase 스키마 마이그레이션 → `lib/mock-data.ts`/`lib/quizzes/*.ts` 를 실제 쿼리로 교체
 - 관리자 나머지 탭(수업/교재/단원 관리, 학습 통계) 라우트 구현
