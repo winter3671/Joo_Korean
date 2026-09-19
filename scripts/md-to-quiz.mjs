@@ -17,6 +17,7 @@
  *   - 정답: 1~4
  *   - 해설(한국어): ...
  *   - 해설(베트남어): (비어 있을 수 있음)
+ *   - 해설(영어): (비어 있을 수 있음)
  */
 import { readFileSync, writeFileSync } from "node:fs";
 
@@ -71,7 +72,11 @@ function parseMd(rawText) {
     const 해설코Match = body.match(
       /^- 해설\(한국어\):\s*([\s\S]*?)(?=\n- 해설\(베트남어\):)/m,
     );
-    const 해설비Match = body.match(/^- 해설\(베트남어\):\s*([\s\S]*)$/m);
+    // 해설(영어) 필드가 있으면 그 앞까지만, 없으면(구버전 md) 본문 끝까지를 베트남어 해설로 본다.
+    const 해설비Match =
+      body.match(/^- 해설\(베트남어\):\s*([\s\S]*?)(?=\n- 해설\(영어\):)/m) ||
+      body.match(/^- 해설\(베트남어\):\s*([\s\S]*)$/m);
+    const 해설영Match = body.match(/^- 해설\(영어\):\s*([\s\S]*)$/m);
 
     const missing = [];
     if (!분류Match) missing.push("분류");
@@ -99,7 +104,17 @@ function parseMd(rawText) {
       s.trim(),
     );
     const explanationVi = 해설비Match ? 해설비Match[1].trim() : "";
+    const explanationEn = 해설영Match ? 해설영Match[1].trim() : "";
     const context = 참고자료Match ? 참고자료Match[1].trim() : "";
+
+    // 번역이 비어 있어도 문제 자체는 건너뛰지 않고 생성한다 (학생 화면은 정상 동작,
+    // 다만 결과 화면의 베트남어/영어 보기 버튼이 그 문제에서는 안 뜬다) — 대신 경고로 알린다.
+    if (!explanationVi) {
+      warnings.push(`Q${qNumber}: 해설(베트남어)가 비어 있습니다 (베트남어 보기 버튼이 안 뜹니다)`);
+    }
+    if (!explanationEn) {
+      warnings.push(`Q${qNumber}: 해설(영어)가 비어 있습니다 (영어 보기 버튼이 안 뜹니다)`);
+    }
 
     questions.push({
       id: `q${qNumber}`,
@@ -112,6 +127,7 @@ function parseMd(rawText) {
       correctAnswer: `c${correctIndex}`,
       explanationKo: 해설코Match[1].trim(),
       ...(explanationVi ? { explanationVi } : {}),
+      ...(explanationEn ? { explanationEn } : {}),
     });
   }
 

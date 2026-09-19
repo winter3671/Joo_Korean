@@ -1,5 +1,5 @@
 // 이 파일은 scripts/md-to-quiz.mjs 로 자동 생성되었습니다.
-// 원본: data/1과/2차시_문제.md
+// 원본: 2차시_문제.md
 // 수정이 필요하면 원본 md 파일을 고친 뒤 스크립트를 다시 실행하세요.
 import type { Quiz } from "@/types/quiz";
 
@@ -36,7 +36,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c1",
-      "explanationKo": "형용사 '바쁘다'의 간접 화법 축약형은 '-대요'입니다. 따라서 '바쁘대요'가 맞습니다."
+      "explanationKo": "형용사 '바쁘다'의 간접 화법 축약형은 '-대요'입니다. 따라서 '바쁘대요'가 맞습니다.",
+      "explanationVi": "Dạng rút gọn của lối nói gián tiếp cho tính từ '바쁘다' (bận) là '-대요'. Vì vậy '바쁘대요' là đúng.",
+      "explanationEn": "The contracted indirect speech form of the adjective '바쁘다' (busy) is '-대요'. Therefore, '바쁘대요' is correct."
     },
     {
       "id": "q2",
@@ -63,7 +65,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "'춥다'는 형용사이므로 간접 화법 축약형 '-대요'가 결합하여 '춥대요'가 됩니다."
+      "explanationKo": "'춥다'는 형용사이므로 간접 화법 축약형 '-대요'가 결합하여 '춥대요'가 됩니다.",
+      "explanationVi": "'춥다' (lạnh) là tính từ, nên kết hợp với dạng rút gọn gián tiếp '-대요', tạo thành '춥대요'.",
+      "explanationEn": "'춥다' (cold) is an adjective, so it combines with the contracted indirect form '-대요', forming '춥대요'."
     },
     {
       "id": "q3",
@@ -90,7 +94,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'좋다'는 형용사이므로 간접 화법 축약형 '-대요'를 붙여 '좋대요'가 됩니다."
+      "explanationKo": "'좋다'는 형용사이므로 간접 화법 축약형 '-대요'를 붙여 '좋대요'가 됩니다.",
+      "explanationVi": "'좋다' (tốt) là tính từ, nên gắn dạng rút gọn gián tiếp '-대요', tạo thành '좋대요'.",
+      "explanationEn": "'좋다' (good) is an adjective, so attaching the contracted indirect form '-대요' gives '좋대요'."
     },
     {
       "id": "q4",
@@ -117,7 +123,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "동사 '오다'의 간접 화법 축약형은 받침이 없으므로 '-ㄴ대요'를 붙여 '온대요'가 됩니다."
+      "explanationKo": "동사 '오다'의 간접 화법 축약형은 받침이 없으므로 '-ㄴ대요'를 붙여 '온대요'가 됩니다.",
+      "explanationVi": "Động từ '오다' (đến) không có patchim, nên dạng rút gọn gián tiếp gắn '-ㄴ대요', tạo thành '온대요'.",
+      "explanationEn": "The verb '오다' (to come) has no final consonant, so the contracted indirect form attaches '-ㄴ대요', forming '온대요'."
     },
     {
       "id": "q5",
@@ -144,7 +152,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c4",
-      "explanationKo": "동사 '듣다'에 받침이 있으므로 간접 화법 축약형 '-는대요'가 결합하여 '듣는대요'가 맞습니다. ㄷ 불규칙이 적용되지 않습니다."
+      "explanationKo": "동사 '듣다'에 받침이 있으므로 간접 화법 축약형 '-는대요'가 결합하여 '듣는대요'가 맞습니다. ㄷ 불규칙이 적용되지 않습니다.",
+      "explanationVi": "Động từ '듣다' (nghe) có patchim, nên dạng rút gọn gián tiếp '-는대요' được kết hợp vào, nên '듣는대요' là đúng. Quy tắc bất quy tắc ㄷ không áp dụng ở đây.",
+      "explanationEn": "The verb '듣다' (to listen) has a final consonant, so the contracted indirect form '-는대요' combines with it, making '듣는대요' correct. The ㄷ irregular rule does not apply here."
     },
     {
       "id": "q6",
@@ -171,7 +181,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "명사 '서울갈비'는 받침이 없으므로 간접 화법 축약형 '-래요'를 붙여 '서울갈비래요'가 됩니다."
+      "explanationKo": "명사 '서울갈비'는 받침이 없으므로 간접 화법 축약형 '-래요'를 붙여 '서울갈비래요'가 됩니다.",
+      "explanationVi": "Danh từ '서울갈비' không có patchim, nên gắn dạng rút gọn gián tiếp '-래요', tạo thành '서울갈비래요'.",
+      "explanationEn": "The noun '서울갈비' has no final consonant, so attaching the contracted indirect form '-래요' gives '서울갈비래요'."
     },
     {
       "id": "q7",
@@ -198,7 +210,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "명사 '오늘'은 받침이 있으므로 간접 화법 축약형 '-이래요'를 결합하여 '오늘이래요'가 됩니다."
+      "explanationKo": "명사 '오늘'은 받침이 있으므로 간접 화법 축약형 '-이래요'를 결합하여 '오늘이래요'가 됩니다.",
+      "explanationVi": "Danh từ '오늘' (hôm nay) có patchim, nên kết hợp dạng rút gọn gián tiếp '-이래요', tạo thành '오늘이래요'.",
+      "explanationEn": "The noun '오늘' (today) has a final consonant, so combining the contracted indirect form '-이래요' gives '오늘이래요'."
     },
     {
       "id": "q8",
@@ -225,7 +239,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'읽다'는 동사이므로 '-는대요'가 붙어 '읽는대요', '없다'는 형용사처럼 활용하여 '-대요'가 붙어 '없대요'가 됩니다."
+      "explanationKo": "'읽다'는 동사이므로 '-는대요'가 붙어 '읽는대요', '없다'는 형용사처럼 활용하여 '-대요'가 붙어 '없대요'가 됩니다.",
+      "explanationVi": "'읽다' (đọc) là động từ, nên gắn '-는대요' thành '읽는대요'; '없다' (không có) chia giống tính từ, nên gắn '-대요' thành '없대요'.",
+      "explanationEn": "'읽다' (to read) is a verb, so '-는대요' is attached, forming '읽는대요'; '없다' (to not have) conjugates like an adjective, so '-대요' is attached, forming '없대요'."
     },
     {
       "id": "q9",
@@ -252,7 +268,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'-고 싶다'는 형용사처럼 활용하므로 간접 화법 축약형 '-대요'가 붙어 '싶대요'가 됩니다."
+      "explanationKo": "'-고 싶다'는 형용사처럼 활용하므로 간접 화법 축약형 '-대요'가 붙어 '싶대요'가 됩니다.",
+      "explanationVi": "'-고 싶다' (muốn) chia giống tính từ, nên dạng rút gọn gián tiếp '-대요' được gắn vào, tạo thành '싶대요'.",
+      "explanationEn": "'-고 싶다' (want to) conjugates like an adjective, so the contracted indirect form '-대요' is attached, forming '싶대요'."
     },
     {
       "id": "q10",
@@ -279,7 +297,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'하다'는 동사이므로 받침 없는 동사에 붙는 '-ㄴ대요'를 써서 '한대요'가 맞습니다."
+      "explanationKo": "'하다'는 동사이므로 받침 없는 동사에 붙는 '-ㄴ대요'를 써서 '한대요'가 맞습니다.",
+      "explanationVi": "'하다' (làm) là động từ, nên dùng '-ㄴ대요', dạng gắn cho động từ không có patchim, nên '한대요' là đúng.",
+      "explanationEn": "'하다' (to do) is a verb, so '-ㄴ대요', the form attached to verbs without a final consonant, is used, making '한대요' correct."
     },
     {
       "id": "q11",
@@ -306,7 +326,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "동사 '좋아하다'는 받침이 없으므로 간접 화법 축약형 '-ㄴ대요'가 결합하여 '좋아한대요'가 됩니다."
+      "explanationKo": "동사 '좋아하다'는 받침이 없으므로 간접 화법 축약형 '-ㄴ대요'가 결합하여 '좋아한대요'가 됩니다.",
+      "explanationVi": "Động từ '좋아하다' (thích) không có patchim, nên dạng rút gọn gián tiếp '-ㄴ대요' được kết hợp vào, tạo thành '좋아한대요'.",
+      "explanationEn": "The verb '좋아하다' (to like) has no final consonant, so the contracted indirect form '-ㄴ대요' combines with it, forming '좋아한대요'."
     },
     {
       "id": "q12",
@@ -333,7 +355,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c1",
-      "explanationKo": "동사 '하다'는 받침이 없으므로 '-ㄴ대요'를 붙여 '결혼한대요', '한대요'가 맞습니다."
+      "explanationKo": "동사 '하다'는 받침이 없으므로 '-ㄴ대요'를 붙여 '결혼한대요', '한대요'가 맞습니다.",
+      "explanationVi": "Động từ '하다' (làm) không có patchim, nên gắn '-ㄴ대요' tạo thành '결혼한대요', '한대요' là đúng.",
+      "explanationEn": "The verb '하다' (to do) has no final consonant, so attaching '-ㄴ대요' correctly forms '결혼한대요' and '한대요'."
     },
     {
       "id": "q13",
@@ -360,7 +384,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "명사 '어디'는 받침이 없으므로 '-래요', 동사 '가다'는 받침이 없으므로 '-ㄴ대요'가 붙어 '어디래요', '간대요'가 됩니다."
+      "explanationKo": "명사 '어디'는 받침이 없으므로 '-래요', 동사 '가다'는 받침이 없으므로 '-ㄴ대요'가 붙어 '어디래요', '간대요'가 됩니다.",
+      "explanationVi": "Danh từ '어디' (đâu) không có patchim nên gắn '-래요'; động từ '가다' (đi) không có patchim nên gắn '-ㄴ대요', tạo thành '어디래요', '간대요'.",
+      "explanationEn": "The noun '어디' (where) has no final consonant, so '-래요' is attached; the verb '가다' (to go) has no final consonant, so '-ㄴ대요' is attached, forming '어디래요' and '간대요'."
     },
     {
       "id": "q14",
@@ -387,7 +413,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "형용사 '어떻다', '습하다'는 '-대요'가 결합하여 '어떻대요', '습하대요'가 됩니다."
+      "explanationKo": "형용사 '어떻다', '습하다'는 '-대요'가 결합하여 '어떻대요', '습하대요'가 됩니다.",
+      "explanationVi": "Tính từ '어떻다' (thế nào), '습하다' (ẩm ướt) kết hợp với '-대요', tạo thành '어떻대요', '습하대요'.",
+      "explanationEn": "The adjectives '어떻다' (how/what kind) and '습하다' (humid) combine with '-대요', forming '어떻대요' and '습하대요'."
     },
     {
       "id": "q15",
@@ -414,7 +442,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "형용사 '어떻다', '재미있다' 모두 간접 화법 축약형 '-대요'가 결합하여 '어떻대요', '재미있대요'가 됩니다."
+      "explanationKo": "형용사 '어떻다', '재미있다' 모두 간접 화법 축약형 '-대요'가 결합하여 '어떻대요', '재미있대요'가 됩니다.",
+      "explanationVi": "Tính từ '어떻다' (thế nào) và '재미있다' (thú vị) đều kết hợp với dạng rút gọn gián tiếp '-대요', tạo thành '어떻대요', '재미있대요'.",
+      "explanationEn": "Both the adjectives '어떻다' (how) and '재미있다' (fun) combine with the contracted indirect form '-대요', forming '어떻대요' and '재미있대요'."
     },
     {
       "id": "q16",
@@ -441,7 +471,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "동사 '부르다'의 기본형 어간에 받침이 없으므로 '-ㄴ다고 하다'가 결합하여 '부른다고 했어요'가 됩니다."
+      "explanationKo": "동사 '부르다'의 기본형 어간에 받침이 없으므로 '-ㄴ다고 하다'가 결합하여 '부른다고 했어요'가 됩니다.",
+      "explanationVi": "Thân từ gốc của động từ '부르다' (hát) không có patchim, nên kết hợp với '-ㄴ다고 하다', tạo thành '부른다고 했어요'.",
+      "explanationEn": "The base stem of the verb '부르다' (to sing) has no final consonant, so it combines with '-ㄴ다고 하다', forming '부른다고 했어요'."
     },
     {
       "id": "q17",
@@ -468,7 +500,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'만들다'는 'ㄹ' 받침 동사이므로 '-ㄴ다고 하다'가 결합할 때 'ㄹ'이 탈락하여 '만든다고 했어요'가 됩니다."
+      "explanationKo": "'만들다'는 'ㄹ' 받침 동사이므로 '-ㄴ다고 하다'가 결합할 때 'ㄹ'이 탈락하여 '만든다고 했어요'가 됩니다.",
+      "explanationVi": "'만들다' (làm ra) là động từ có patchim 'ㄹ', nên khi kết hợp với '-ㄴ다고 하다', âm 'ㄹ' bị lược bỏ, tạo thành '만든다고 했어요'.",
+      "explanationEn": "'만들다' (to make) is a verb ending in 'ㄹ', so when combined with '-ㄴ다고 하다', the 'ㄹ' is dropped, forming '만든다고 했어요'."
     },
     {
       "id": "q18",
@@ -495,7 +529,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c4",
-      "explanationKo": "'필요하다'는 형용사이므로 기본형에 바로 '-다고 하다'를 붙여 '필요하다고 했어요'가 됩니다."
+      "explanationKo": "'필요하다'는 형용사이므로 기본형에 바로 '-다고 하다'를 붙여 '필요하다고 했어요'가 됩니다.",
+      "explanationVi": "'필요하다' (cần thiết) là tính từ, nên gắn trực tiếp '-다고 하다' vào dạng cơ bản, tạo thành '필요하다고 했어요'.",
+      "explanationEn": "'필요하다' (necessary) is an adjective, so '-다고 하다' is attached directly to the base form, forming '필요하다고 했어요'."
     },
     {
       "id": "q19",
@@ -522,7 +558,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "'재미있다'는 '있다'가 포함된 형용사이므로 '-다고 하다'가 결합하여 '재미있다고 했어요'가 됩니다."
+      "explanationKo": "'재미있다'는 '있다'가 포함된 형용사이므로 '-다고 하다'가 결합하여 '재미있다고 했어요'가 됩니다.",
+      "explanationVi": "'재미있다' (thú vị) là tính từ có chứa '있다', nên kết hợp với '-다고 하다', tạo thành '재미있다고 했어요'.",
+      "explanationEn": "'재미있다' (fun/interesting) is an adjective containing '있다', so it combines with '-다고 하다', forming '재미있다고 했어요'."
     },
     {
       "id": "q20",
@@ -549,7 +587,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "화자의 의지나 필요성을 나타내는 '-아야/어야겠다'가 '하다'와 결합하여 '해야겠어요'가 됩니다."
+      "explanationKo": "화자의 의지나 필요성을 나타내는 '-아야/어야겠다'가 '하다'와 결합하여 '해야겠어요'가 됩니다.",
+      "explanationVi": "'-아야/어야겠다', diễn tả ý chí hoặc sự cần thiết của người nói, kết hợp với '하다' (làm), tạo thành '해야겠어요'.",
+      "explanationEn": "'-아야/어야겠다', which expresses the speaker's intention or necessity, combines with '하다' (to do), forming '해야겠어요'."
     },
     {
       "id": "q21",
@@ -576,7 +616,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'예약하다'에 '-아야/어야겠다'가 결합하면 '예약해야겠어요'가 됩니다."
+      "explanationKo": "'예약하다'에 '-아야/어야겠다'가 결합하면 '예약해야겠어요'가 됩니다.",
+      "explanationVi": "Khi '-아야/어야겠다' kết hợp với '예약하다' (đặt trước), tạo thành '예약해야겠어요'.",
+      "explanationEn": "When '-아야/어야겠다' combines with '예약하다' (to reserve/book), it forms '예약해야겠어요'."
     },
     {
       "id": "q22",
@@ -603,7 +645,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "'자르다'는 '르' 불규칙 동사로, 모음 어미 '-아야겠다'와 만나면 '잘라야겠어요'로 바뀝니다."
+      "explanationKo": "'자르다'는 '르' 불규칙 동사로, 모음 어미 '-아야겠다'와 만나면 '잘라야겠어요'로 바뀝니다.",
+      "explanationVi": "'자르다' (cắt) là động từ bất quy tắc '르', khi gặp đuôi từ có nguyên âm '-아야겠다' sẽ đổi thành '잘라야겠어요'.",
+      "explanationEn": "'자르다' (to cut) is a '르' irregular verb, and when it meets the vowel-starting ending '-아야겠다', it changes to '잘라야겠어요'."
     },
     {
       "id": "q23",
@@ -630,7 +674,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "'보다'의 어간 모음이 'ㅗ'이므로 '-아야겠다'와 만나 축약되어 '봐야겠어요'가 됩니다."
+      "explanationKo": "'보다'의 어간 모음이 'ㅗ'이므로 '-아야겠다'와 만나 축약되어 '봐야겠어요'가 됩니다.",
+      "explanationVi": "Vì nguyên âm thân từ của '보다' (xem/thử) là 'ㅗ', nên khi gặp '-아야겠다' nó được rút gọn thành '봐야겠어요'.",
+      "explanationEn": "Since the stem vowel of '보다' (to see/try) is 'ㅗ', when it meets '-아야겠다' it contracts to '봐야겠어요'."
     },
     {
       "id": "q24",
@@ -657,7 +703,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "형용사 '춥다'에 간접 화법 '-다고 듣다'가 결합하여 '춥다고 들었어요'가 됩니다."
+      "explanationKo": "형용사 '춥다'에 간접 화법 '-다고 듣다'가 결합하여 '춥다고 들었어요'가 됩니다.",
+      "explanationVi": "Tính từ '춥다' (lạnh) kết hợp với lối nói gián tiếp '-다고 듣다', tạo thành '춥다고 들었어요'.",
+      "explanationEn": "The adjective '춥다' (cold) combines with the indirect speech form '-다고 듣다', forming '춥다고 들었어요'."
     },
     {
       "id": "q25",
@@ -684,7 +732,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c1",
-      "explanationKo": "장소를 나타내는 부사격 조사 '에'와 동사 '살다'가 쓰입니다. '살다'에 '-ㄴ다고 듣다'가 결합할 때 'ㄹ'이 탈락하여 '산다고 들었어요'가 됩니다."
+      "explanationKo": "장소를 나타내는 부사격 조사 '에'와 동사 '살다'가 쓰입니다. '살다'에 '-ㄴ다고 듣다'가 결합할 때 'ㄹ'이 탈락하여 '산다고 들었어요'가 됩니다.",
+      "explanationVi": "Trợ từ chỉ nơi chốn '에' và động từ '살다' (sống) được sử dụng. Khi '살다' kết hợp với '-ㄴ다고 듣다', âm 'ㄹ' bị lược bỏ, tạo thành '산다고 들었어요'.",
+      "explanationEn": "The locative particle '에' and the verb '살다' (to live) are used. When '살다' combines with '-ㄴ다고 듣다', the 'ㄹ' is dropped, forming '산다고 들었어요'."
     },
     {
       "id": "q26",
@@ -711,7 +761,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c4",
-      "explanationKo": "동사 '먹다'는 받침이 있으므로 간접 화법 '-는다고 듣다'가 결합하여 '먹는다고 들었어요'가 됩니다."
+      "explanationKo": "동사 '먹다'는 받침이 있으므로 간접 화법 '-는다고 듣다'가 결합하여 '먹는다고 들었어요'가 됩니다.",
+      "explanationVi": "Động từ '먹다' (ăn) có patchim, nên kết hợp với lối nói gián tiếp '-는다고 듣다', tạo thành '먹는다고 들었어요'.",
+      "explanationEn": "The verb '먹다' (to eat) has a final consonant, so it combines with the indirect speech form '-는다고 듣다', forming '먹는다고 들었어요'."
     },
     {
       "id": "q27",
@@ -738,7 +790,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c1",
-      "explanationKo": "명사 '시'는 받침이 없으므로 '-라고 듣다'가 결합하여 '4시라고 들었어요'가 됩니다."
+      "explanationKo": "명사 '시'는 받침이 없으므로 '-라고 듣다'가 결합하여 '4시라고 들었어요'가 됩니다.",
+      "explanationVi": "Danh từ '시' (giờ) không có patchim, nên kết hợp với '-라고 듣다', tạo thành '4시라고 들었어요'.",
+      "explanationEn": "The noun '시' (o'clock) has no final consonant, so it combines with '-라고 듣다', forming '4시라고 들었어요'."
     },
     {
       "id": "q28",
@@ -765,7 +819,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c2",
-      "explanationKo": "형용사 '많다'의 간접 화법 축약형은 '-대요'이므로 '많대요'가 됩니다."
+      "explanationKo": "형용사 '많다'의 간접 화법 축약형은 '-대요'이므로 '많대요'가 됩니다.",
+      "explanationVi": "Dạng rút gọn gián tiếp của tính từ '많다' (nhiều) là '-대요', nên tạo thành '많대요'.",
+      "explanationEn": "The contracted indirect form of the adjective '많다' (many/much) is '-대요', so it becomes '많대요'."
     },
     {
       "id": "q29",
@@ -792,7 +848,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "동사 '참석하다'는 받침 없는 동사이므로 간접 화법 축약형 '-ㄴ대요'를 붙여 '참석한대요'가 됩니다."
+      "explanationKo": "동사 '참석하다'는 받침 없는 동사이므로 간접 화법 축약형 '-ㄴ대요'를 붙여 '참석한대요'가 됩니다.",
+      "explanationVi": "Động từ '참석하다' (tham dự) không có patchim, nên gắn dạng rút gọn gián tiếp '-ㄴ대요', tạo thành '참석한대요'.",
+      "explanationEn": "The verb '참석하다' (to attend) has no final consonant, so attaching the contracted indirect form '-ㄴ대요' gives '참석한대요'."
     },
     {
       "id": "q30",
@@ -819,7 +877,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c4",
-      "explanationKo": "동사 '먹다'는 받침이 있으므로 '-는대요'가 결합하여 '먹는대요'가 됩니다."
+      "explanationKo": "동사 '먹다'는 받침이 있으므로 '-는대요'가 결합하여 '먹는대요'가 됩니다.",
+      "explanationVi": "Động từ '먹다' (ăn) có patchim, nên kết hợp với '-는대요', tạo thành '먹는대요'.",
+      "explanationEn": "The verb '먹다' (to eat) has a final consonant, so it combines with '-는대요', forming '먹는대요'."
     },
     {
       "id": "q31",
@@ -846,7 +906,9 @@ const quiz: Quiz = {
         }
       ],
       "correctAnswer": "c3",
-      "explanationKo": "명사 '선생님'은 받침이 있으므로 간접 화법 축약형 '-이래요'가 결합하여 '선생님이래요'가 됩니다."
+      "explanationKo": "명사 '선생님'은 받침이 있으므로 간접 화법 축약형 '-이래요'가 결합하여 '선생님이래요'가 됩니다.",
+      "explanationVi": "Danh từ '선생님' (giáo viên) có patchim, nên kết hợp với dạng rút gọn gián tiếp '-이래요', tạo thành '선생님이래요'.",
+      "explanationEn": "The noun '선생님' (teacher) has a final consonant, so it combines with the contracted indirect form '-이래요', forming '선생님이래요'."
     }
   ]
 };
